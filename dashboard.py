@@ -7,7 +7,7 @@ import dash_table
 import base64
 import datetime
 import io
-import pandas as pd 
+import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -20,7 +20,7 @@ colors = {
 }
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
-    html.H1(
+    html.H2(
         children='Early Warning Model',
         style={
             'textAlign': 'center',
@@ -28,12 +28,12 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         }
     ),
 
-    html.Div(children='A Python Dash Concept to manage Default Risk', 
+    html.Div(children='A Python Dash Concept to manage Probability of Default',
              style={
                  'textAlign': 'center',
                  'color': colors['text']
-    }),
-    
+             }),
+
     dcc.Upload(
         id='upload-data',
         children=html.Div([
@@ -54,13 +54,73 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         multiple=True
     ),
     html.Div(id='output-data-upload'),
-    
-      dcc.Graph(
+
+    html.H2(
+        children='PARTE 1: Anomalie rapporti verso controparti commerciali',
+        style={'textAlign': 'center',
+                'color': colors['text']
+             },
+    ),
+    html.H3(
+        children='Ricevute ed altri avvisi di pagamento non onorate alla scadenza',
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id = 'question 1',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='Ritardi nei pagamenti concordati superiori a 90 giorni',
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id = 'question 2',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='Pagamenti Parziali rispetto al prezzo concordarto',
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id = 'question 3',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+        'textAlign': 'center'
+        }
+    ),
+    dcc.Graph(
         id='example-graph-2',
         figure={
             'data': [
                 {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': 'Montréal'},
             ],
             'layout': {
                 'plot_bgcolor': colors['text'],
@@ -76,6 +136,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
 
 def parse_contents(contents, filename, date):
+    global df
     content_type, content_string = contents.split(',')
 
     decoded = base64.b64decode(content_string)
@@ -98,20 +159,20 @@ def parse_contents(contents, filename, date):
         html.H6(datetime.datetime.fromtimestamp(date)),
 
         dash_table.DataTable(
-             style_data={
-                 'whiteSpace': 'normal',
-                 'height': 'auto'
-                 },
-             style_cell={
-                 'height': 'auto',
-                 'minWidth': '0px', 'maxWidth': '180px',
-                 'whiteSpace': 'normal'
-                 },
-            
+            style_data={
+                'whiteSpace': 'normal',
+                'height': 'auto'
+            },
+            style_cell={
+                'height': 'auto',
+                'minWidth': '0px', 'maxWidth': '180px',
+                'whiteSpace': 'normal'
+            },
+
             data=df.to_dict('records'),
             columns=[{'name': i, 'id': i} for i in df.columns],
-            fixed_rows={ 'headers': True, 'data': 0 },
-            
+            fixed_rows={'headers': True, 'data': 0},
+
         ),
 
         html.Hr(),  # horizontal line
@@ -129,16 +190,13 @@ def parse_contents(contents, filename, date):
               [Input('upload-data', 'contents')],
               [State('upload-data', 'filename'),
                State('upload-data', 'last_modified')])
-
-
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
         children = [
             parse_contents(c, n, d) for c, n, d in
             zip(list_of_contents, list_of_names, list_of_dates)]
         return children
- 
 
-    
+
 if __name__ == '__main__':
     app.run_server(debug=False)
