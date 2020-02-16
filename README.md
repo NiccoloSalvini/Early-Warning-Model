@@ -12,6 +12,7 @@ My goal is to make it clear and having statistical significance.
  final statement **can be widely different** from the model results. 
  
  ![img2](images\img2.jpeg)
+ <img src="images\img2.jpeg" alt="nicco" style="float: left; margin-right: 10px;" />
  
  Some Notes about the model.
  
