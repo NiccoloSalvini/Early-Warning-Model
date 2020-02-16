@@ -56,19 +56,32 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     html.Div(id='output-data-upload'),
 
     html.H2(
+        children='Compila il questionario sotto e alla fine il modello tira fuori la probabilità di Default',
+        style={'textAlign': 'center'
+               },
+    ),
+
+
+
+
+
+
+
+
+    html.H2(
         children='PARTE 1: Anomalie rapporti verso controparti commerciali',
         style={'textAlign': 'center',
-                'color': colors['text']
-             },
+               'color': colors['text']
+               },
     ),
     html.H3(
         children='Ricevute ed altri avvisi di pagamento non onorate alla scadenza',
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
     dcc.RadioItems(
-        id = 'question 1',
+        id='question 1',
         options=[
             {'label': 'Sì', 'value': 'NYC'},
             {'label': 'No', 'value': 'MTL'}
@@ -76,17 +89,17 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         value='MTL',
         labelStyle={'display': 'inline-block'},
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
     html.H3(
         children='Ritardi nei pagamenti concordati superiori a 90 giorni',
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
     dcc.RadioItems(
-        id = 'question 2',
+        id='question 2',
         options=[
             {'label': 'Sì', 'value': 'NYC'},
             {'label': 'No', 'value': 'MTL'}
@@ -94,17 +107,17 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         value='MTL',
         labelStyle={'display': 'inline-block'},
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
     html.H3(
         children='Pagamenti Parziali rispetto al prezzo concordarto',
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
     dcc.RadioItems(
-        id = 'question 3',
+        id='question 3',
         options=[
             {'label': 'Sì', 'value': 'NYC'},
             {'label': 'No', 'value': 'MTL'}
@@ -112,9 +125,359 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         value='MTL',
         labelStyle={'display': 'inline-block'},
         style={
-        'textAlign': 'center'
+            'textAlign': 'center'
         }
     ),
+    html.H3(
+        children='Richieste di riscadenzamento nei pagamenti concordati',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 4',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='Compensazioni, abbuoni derivanti da resi, controversi derivanri dalla quantità del prodotto o da ritardi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 5',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='Sconti o promozioni di ogni tipi in misura superiore al 50%del prezzo di listino considerati anomali',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 6',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='sensibile aumento della dilazione concessa ai clienti',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 7',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='sensibile diminuziione della dilazione concessa ai fornitori ',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 8',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='esistenza di procedure conocorsuali a carico di clienti chiave',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 9',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='esistenza di procedure conocorsuali a carico di fornitori chiave',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 10',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H2(
+        children='PARTE 2: ANOMALIE NEI RAPPORTI CON ALTRI SOGGETTI FINANZIARI',
+        style={'textAlign': 'center',
+               'color': colors['text']
+               }
+    ),
+    html.H3(
+        children='significativo e concordante deterioramento dei ratign interni asseganti dalle banche ',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 11',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='sconfini rilevanti  e ripetuti inc eentrale dei rischi (nell\'arco din 12 mesi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 12',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 13',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle segnalazioni in CR di insoluti su anticipo crediti',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 14',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale richieste di fido oltre gli ordinari fabbisogni di cassa attesi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 15',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomala e continuativa crescite di fidi utilizzati  sovrautilizzo dei fidi di smobilizzo crediti commerciali',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 16',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='rientri nelle linee di credito per cassa ',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 17',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 18',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 19',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 20',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 21',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+html.H3(
+        children='anomale aumento delle richeiste di garanzie su beni aziendali o di soggetti terzi',
+        style={
+            'textAlign': 'center'
+        }
+    ),
+    dcc.RadioItems(
+        id='question 22',
+        options=[
+            {'label': 'Sì', 'value': 'NYC'},
+            {'label': 'No', 'value': 'MTL'}
+        ],
+        value='MTL',
+        labelStyle={'display': 'inline-block'},
+        style={
+            'textAlign': 'center'
+        }
+    ),
+
+
     dcc.Graph(
         id='example-graph-2',
         figure={
