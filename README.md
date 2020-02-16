@@ -5,21 +5,19 @@ This **Dashboard** is an in-itinere project to evaluate the **Risk** associated 
 This tool is pretty confusing developed in Excel by Ordine dei Commercialisti di Milano so
 My goal is to make it clear and having statistical significance.
 
- ![img1](images\img1.jpeg)
+<img src="images\img1.jpeg" alt="img1" style="float: left; margin-right: 10px;" />
  
  This tool defines a **mere decision support** and does not constitute in any case,
  whether it is independent or professional, of the control's body designated, whom 
  final statement **can be widely different** from the model results. 
  
- ![img2](images\img2.jpeg)
- <img src="images\img2.jpeg" alt="nicco" style="float: left; margin-right: 10px;" />
+<img src="images\img2.jpeg" alt="img2" style="float: left; margin-right: 10px;" />
  
- Some Notes about the model.
- 
- ![img3](images\img3.jpeg)
- 
+ Some Notes about the model. 
+
+<img src="images\img3.jpeg" alt="img3" style="float: left; margin-right: 10px;" />
+
  The Financial Math behind: 
  
- ![img4](images\img4.jpeg)
- 
+<img src="images\img4.jpeg" alt="img4" style="float: left; margin-right: 10px;" />
  
