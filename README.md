@@ -1,9 +1,9 @@
 # Early-Warning-Model
-an interactive dashboard that displays some Probability of Default wake-up-calls
+interactive dashboard that displays Probability of Default wake-up-calls
 ------
-This **Dashboard** is an in-itinere project to evaluate the **Risk** associated to some financial indexes fluctuation.
-This tool is pretty confusing developed in Excel by Ordine dei Commercialisti di Milano so
-My goal is to make it clear and having statistical significance.
+This **Dashboard** is an `in-itinere` project to evaluate the **Risk** associated to some financial indexes fluctuation.
+The original tool was pretty confusing and developed in Excel by Ordine dei Commercialisti di Milano, so
+my goal is to make it clear and have some statistical significance.
 
 <img src="images\img1.jpeg" alt="img1" style="float: left; margin-right: 10px;" />
  
